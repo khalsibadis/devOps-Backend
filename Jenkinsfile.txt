@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 pipeline {
        agent any
         stages{
@@ -23,7 +25,7 @@ pipeline {
                 sh  'mvn clean'
                 }
             }
-            stage('MCN COMPILE')
+            stage('MVN COMPILE')
             {
                 steps{
                 sh  'mvn compile'
