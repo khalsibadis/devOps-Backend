@@ -8,6 +8,7 @@ pipeline {
                     echo 'Pulling...';
                     git branch: 'badisBack',
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
+                    credentialsId: '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'
                              }
                              }
             stage('Date') {
@@ -31,7 +32,7 @@ pipeline {
                 sh  'mvn compile'
                 }
             }
-             stage('MVN SONARQUBE')
+             stage('MVN SONARQUBE ')
                         {
                             steps{
                             sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
