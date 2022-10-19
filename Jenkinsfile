@@ -9,10 +9,6 @@ pipeline {
                     git branch: 'badisBack',
                     credentialsId: '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',
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
-
-
-
-
                              }
                              }
             stage('Date') {
@@ -42,6 +38,11 @@ pipeline {
                             sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                             }
                         }
+                        stage("nexus deploy"){
+                                       steps{
+                                               sh 'mvn  deploy'
+                                       }
+                                  }
                             
 
 	}
