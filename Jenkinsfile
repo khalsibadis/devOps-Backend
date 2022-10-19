@@ -6,9 +6,10 @@ pipeline {
             stage('Checkout GIT'){
                 steps{
                     echo 'Pulling...';
-                    git branch: 'badisBack',
-                    url : 'https://github.com/khalsibadis/devOps-Backend.git',
-                    credentialsId: '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';
+                  
+
+                    git branch: 'badisBack', credentialsId: 'git', url: 'https://github.com/khalsibadis/devOps-Backend.git'
+
                              }
                              }
             stage('Date') {
