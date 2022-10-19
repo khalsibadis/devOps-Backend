@@ -7,8 +7,9 @@ pipeline {
                 steps{
                     echo 'Pulling...';
                     git branch: 'badisBack',
-                    url : 'https://github.com/khalsibadis/devOps-Backend.git',
-                    credentialsId: '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';
+                      credentialsId: 'git',
+                    url : 'https://github.com/khalsibadis/devOps-Backend.git';
+
 
 
 
