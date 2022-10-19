@@ -8,9 +8,9 @@ pipeline {
                     echo 'Pulling...';
                     git branch: 'badisBack',
                     url : 'https://github.com/khalsibadis/devOps-Backend.git',
-                    credentialsId: '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';
+                    credentialsId: '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';
 
-                    
+
 
                              }
                              }
