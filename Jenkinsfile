@@ -11,15 +11,7 @@ pipeline {
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
                              }
                              }
-            stage('Date') {
-                steps {
-                     script{
-                     def date = new Date()
-                     sdf = new SimpleDateFormat("MM/dd/yyyy")
-                     println(sdf.format(date))
-                             }
-                             }
-                             }
+           
             stage('MVN CLEAN')
             {
                 steps{
