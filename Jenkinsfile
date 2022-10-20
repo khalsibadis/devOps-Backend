@@ -24,7 +24,7 @@ pipeline {
                 sh  'mvn compile'
                 }
             }
-         
+
              stage('MVN SONARQUBE ')
                         {
                             steps{
