@@ -11,7 +11,16 @@ pipeline {
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
                              }
                              }
+     stage('Testing process') {
+                              steps {
+                               script {
+                                sh 'echo "Test is processing ...."'
+                                sh 'mvn clean test'
+                               }
 
+                              }
+
+                            }
             stage('MVN CLEAN')
             {
                 steps{
