@@ -11,7 +11,7 @@ pipeline {
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
                              }
                              }
-           
+
             stage('MVN CLEAN')
             {
                 steps{
