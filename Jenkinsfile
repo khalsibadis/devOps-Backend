@@ -24,6 +24,11 @@ pipeline {
                 sh  'mvn compile'
                 }
             }
+            stage('DOCKER COMPOSE') {
+                            steps {
+                                        sh 'docker-compose up -d --build'
+                            }
+                      }
 
              stage('MVN SONARQUBE ')
                         {
