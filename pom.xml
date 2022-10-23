@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>tpAchatProject</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<name>tpAchatProject</name>
 	<description>tpAchatProject</description>
 	<properties>
@@ -118,9 +118,9 @@
 		<finalName>docker-spring-boot</finalName>
 	</build>
 	<distributionManagement>
-		<repository>
-			<id>nexus-releases</id>
-			<url>http://192.168.33.166:8081/repository/maven-releases</url>
-		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://192.168.33.166:8081/repository/maven-snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
 </project>
