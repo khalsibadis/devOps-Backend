@@ -17,7 +17,7 @@ public class StockServiceImpl  {
 	StockRepository stockRepository;
 
 
-	@Override
+
 	public List<Stock> retrieveAllStocks() {
 		// récuperer la date à l'instant t1
 		log.info("In method retrieveAllStocks");
@@ -31,7 +31,7 @@ public class StockServiceImpl  {
 		return stocks;
 	}
 
-	@Override
+	
 	public Stock addStock(Stock s) {
 		// récuperer la date à l'instant t1
 		log.info("In method addStock");
@@ -39,20 +39,20 @@ public class StockServiceImpl  {
 
 	}
 
-	@Override
+	
 	public void deleteStock(Long stockId) {
 		log.info("In method deleteStock");
 		stockRepository.deleteById(stockId);
 
 	}
 
-	@Override
+	
 	public Stock updateStock(Stock s) {
 		log.info("In method updateStock");
 		return stockRepository.save(s);
 	}
 
-	@Override
+
 	public Stock retrieveStock(Long stockId) {
 		long start = System.currentTimeMillis();
 		log.info("In method retrieveStock");
@@ -64,7 +64,7 @@ public class StockServiceImpl  {
 		return stock;
 	}
 
-	@Override
+	
 	public String retrieveStatusStock() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date now = new Date();
