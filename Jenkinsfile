@@ -26,11 +26,7 @@ pipeline {
                 sh 'mvn package'
                 }
              }
-             stage('DOCKER COMPOSE') {
-                steps {
-                   sh 'DockerCompose up -d --build'
-                }
-             }
+             
               stage('MVN SONARQUBE '){
                  steps{
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
