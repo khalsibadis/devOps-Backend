@@ -13,17 +13,17 @@ pipeline {
             stage('MVN CLEAN'){
             steps{
                 echo 'Pulling...';
-                sh  'mvn clean'
+                sh 'mvn clean'
                 }
             }
              stage('MVN COMPILE'){
                 steps{
-                   sh  'mvn compile'
+                sh 'mvn compile'
                 }
              }
              stage('MVN PACKAGE'){
                 steps{
-                    sh  'mvn package'
+                sh 'mvn package'
                 }
              }
              stage('DOCKER COMPOSE') {
@@ -33,7 +33,7 @@ pipeline {
              }
               stage('MVN SONARQUBE '){
                  steps{
-                    sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
+                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
                  }
               }
               stage("nexus deploy"){
