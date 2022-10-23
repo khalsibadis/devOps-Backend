@@ -34,7 +34,8 @@ pipeline {
               }
               stage("nexus deploy"){
                  steps{
-                    sh 'mvn  deploy'
+                  //  sh 'mvn deploy'
+                  nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: 'target/tpAchatProject-1.0.4.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'com.esprit.examen', nexusUrl: '192.168.33.166:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'http://192.168.33.166:8081/repository/nexus-snapshots/', version: '1.0.4'
                  }
               }
           }
