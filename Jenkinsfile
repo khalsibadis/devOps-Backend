@@ -31,12 +31,11 @@ pipeline {
                 sh 'date'
             }
         }
-             stage('MVN SONARQUBE ')
-                        {
-                            steps{
-                            sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
-                            }
-                        }
+              stage("build & SonarQube analysis") {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.17:8080/ -Dsonar.login=esprit'
+            }
+          }
                          stage('package artifact'){
               steps{
                   sh 'mvn package'
