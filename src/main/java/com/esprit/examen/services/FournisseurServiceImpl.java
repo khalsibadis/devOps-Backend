@@ -5,11 +5,9 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.esprit.examen.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.esprit.examen.entities.DetailFournisseur;
-import com.esprit.examen.entities.Fournisseur;
-import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.repositories.DetailFournisseurRepository;
 import com.esprit.examen.repositories.FournisseurRepository;
 import com.esprit.examen.repositories.ProduitRepository;
@@ -78,12 +76,9 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	public void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur) {
 		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
 		SecteurActivite secteurActivite = secteurActiviteRepository.findById(idSecteurActivite).orElse(null);
-        fournisseur.getSecteurActivites().add(secteurActivite);
-        fournisseurRepository.save(fournisseur);
+		secteurActivite.getFournisseurs().add(fournisseur);
 		
 		
 	}
-
-	
 
 }

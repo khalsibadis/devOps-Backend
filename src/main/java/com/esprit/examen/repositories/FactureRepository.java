@@ -25,6 +25,8 @@ public interface FactureRepository extends JpaRepository<Facture, Long> {
 
 	@Modifying
 	@Query("update Facture f set f.archivee=true where f.idFacture=?1")
-	void updateFacture(Long id);
-	
+	default void updateFacture(Long id) {
+
+	}
+
 }
