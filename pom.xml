@@ -30,10 +30,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-
-
 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -117,10 +113,4 @@
 		</plugins>
 		<finalName>docker-spring-boot</finalName>
 	</build>
-<!--	<distributionManagement>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<url>http://192.168.33.166:8081/repository/maven-snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>-->
 </project>
