@@ -32,7 +32,7 @@ public class FactureServiceImpl implements IFactureService {
 	ProduitRepository produitRepository;
     @Autowired
     ReglementServiceImpl reglementService;
-	
+
 	@Override
 	public List<Facture> retrieveAllFactures() {
 		List<Facture> factures =  factureRepository.findAll();
@@ -73,18 +73,20 @@ public class FactureServiceImpl implements IFactureService {
 	}
 
 	@Override
-	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
 
-			Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
-			return (List<Facture>) fournisseur.getFactures();
+	public List<Facture> getFacturesByFournisseur(Long idFournisseur)  {
+			Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElseThrow(NullPointerException::new);
+		return (List<Facture>) fournisseur.getFactures();
 
 	}
 
 	@Override
+
+
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		try {
-			Facture facture = factureRepository.findById(idFacture).orElse(null);
-			Operateur operateur = operateurRepository.findById(idOperateur).orElse(null);
+			Facture facture = factureRepository.findById(idFacture).orElseThrow(NullPointerException::new);
+			Operateur operateur = operateurRepository.findById(idOperateur).orElseThrow(NullPointerException::new);
 			operateur.getFactures().add(facture);
 			operateurRepository.save(operateur);
 		}catch (NullPointerException e){
