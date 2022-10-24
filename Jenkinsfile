@@ -1,5 +1,3 @@
-import java.text.SimpleDateFormat
-
 pipeline {
        agent any
         stages{
