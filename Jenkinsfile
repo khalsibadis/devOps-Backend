@@ -21,16 +21,7 @@ pipeline {
                 sh  'mvn compile -e'
                 }
             }
-      stage('Java') {
-            steps {
-                sh 'java -version'
-            }
-        }
-           stage('Date') {
-            steps {
-                sh 'date'
-            }
-        }
+      
               stage("build & SonarQube analysis") {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.17:8080/ -Dsonar.login=esprit'
