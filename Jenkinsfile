@@ -25,7 +25,7 @@ pipeline {
               stage("build & SonarQube analysis") {
             steps {
                //  sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
-                sh '- mvn verify sonar:sonar -Dsonar.host.url=http://localhost:http://192.168.1.17:9000/ -Dsonar.login=admin -Dsonar.password=admin'
+                sh 'mvn verify sonar:sonar -Dsonar.host.url=http://localhost:http://192.168.1.17:9000/ -Dsonar.login=admin -Dsonar.password=esprit'
             }
           }
                          stage('package artifact'){
