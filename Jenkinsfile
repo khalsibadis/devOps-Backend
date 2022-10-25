@@ -22,19 +22,23 @@ pipeline {
                 }
             }
       
-              stage("build & SonarQube analysis") {
+        stage("build & SonarQube analysis") {
             steps {
 
                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
                
             }
           }
-                         stage('package artifact'){
+         stage('package artifact'){
               steps{
                   sh 'mvn package'
               }
           }
-                            
+          stage("nexus deploy"){
+                steps{
+                      sh 'mvn  deploy'
+             }
+         }                   
 
 	}
 }
