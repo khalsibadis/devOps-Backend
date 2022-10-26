@@ -35,24 +35,16 @@ pipeline {
               }
           }
           stage("nexus deploy"){
-                steps{
-                    nexusArtifactUploader artifacts: [
-                        [
-                            artifactId: 'tpAchatProject', 
-                            classifier: '', 
-                            file: 'tpAchatProject', 
-                            type: 'jar'
-                            ]
-                            ], 
-                            credentialsId: 'nexus3', 
-                            groupId: 'com.esprit.examen', 
-                            nexusUrl: '192.168.1.17:8081', 
-                            nexusVersion: 'nexus3', 
-                            protocol: 'http', 
-                            repository: 'Devops-Back-Release', 
-                            version: '1.0'
-             }
-         }                   
+            steps{
+                  sh 'mvn deploy:deploy-file -DgroupId=com.esprit.examen \
+                        -DartifactId=tpAchatProject \
+                        -Dversion=1.0 \
+                        -Dpackaging=jar \
+                        -Dfile=./target/tpAchatProject-1.0.jar \
+                        -DrepositoryId=Devops-Back-Release \
+                        -Durl=http://192.168.1.17:8081/repository/Devops-Back-Release/'
+              }
+          }
 
 	}
 }
