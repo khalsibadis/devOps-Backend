@@ -49,7 +49,7 @@ pipeline {
                             nexusUrl: '192.168.1.17:8081', 
                             nexusVersion: 'nexus3', 
                             protocol: 'http', 
-                            repository: 'http://192.168.1.17:8081/repository/Devops-Back-Release/', 
+                            repository: 'Devops-Back-Release', 
                             version: '1.0'
              }
          }                   
