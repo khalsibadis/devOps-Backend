@@ -27,11 +27,28 @@ pipeline {
                               sh  'mvn package'
                           }
                     }
-            stage('DOCKER COMPOSE') {
-                            steps {
-                                        sh 'docker-compose up -d --build'
-                            }
-                      }
+                    stage('Build docker image'){
+                                                 steps{
+                                                     script{
+                                                        sh 'docker build -t badiskhalsi/springproject .'
+                                                     }
+                                                 }
+                                             }
+
+                                              stage('Docker login') {
+
+                                                                                      steps {
+                                                                                       sh 'echo "login Docker ...."'
+                                                                	sh 'docker login -u badiskhalsi -p badis160698'
+                                                                            }  }
+
+
+          stage('Docker push') {
+
+                           steps {
+                                sh 'echo "Docker is pushing ...."'
+                               	sh 'docker push badiskhalsi/springprojet'
+                                  }  }
 
              stage('MVN SONARQUBE ')
                         {
