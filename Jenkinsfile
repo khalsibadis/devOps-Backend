@@ -51,14 +51,7 @@ pipeline {
                                   }  }
 
 
-                                  stage('Testing process') {
-                                                                steps {
-                                                                 script {
-                                                                  sh 'echo "Test is processing ...."'
-                                                                  sh 'mvn clean test'
-                                                                 }
-                                                                }
-                                                              }
+
 
              stage('MVN SONARQUBE ')
                         {
