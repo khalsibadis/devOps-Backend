@@ -47,7 +47,7 @@ pipeline {
 
                            steps {
                                 sh 'echo "Docker is pushing ...."'
-                               	sh 'docker push badiskhalsi/springprojet'
+                               	sh 'docker push badiskhalsi/springproject'
                                   }  }
 
              stage('MVN SONARQUBE ')
