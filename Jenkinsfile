@@ -60,10 +60,12 @@ pipeline {
           }
               post {
                       success {
-                          mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'jbara.aymen@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'aymen.jb.06@gmail.com'
+                        //  mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'jbara.aymen@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'aymen.jb.06@gmail.com'
+                            emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'aymen.jb.06@gmail.com'
                       }
                       failure {
-                          mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'jbara.aymen@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'aymen.jb.06@gmail.com'
+                         // mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'jbara.aymen@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'aymen.jb.06@gmail.com'
+                            emailext body: 'Pipeline build not success', subject: 'Pipeline build', to: 'aymen.jb.06@gmail.com'
                       }
               }
           }
