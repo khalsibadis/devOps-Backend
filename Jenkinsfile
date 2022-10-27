@@ -52,6 +52,11 @@ pipeline {
                                sh 'docker push aymenjbara/dockerfile_spring:2.2.0'
                                }
                             }
+                              stage('DOCKER COMPOSE') {
+                                                        steps {
+                                                                    sh 'docker-compose up -d --build'
+                                                        }
+                                                  }
           }
               post {
                       success {
