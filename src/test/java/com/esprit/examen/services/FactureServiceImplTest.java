@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @MockitoSettings(strictness = Strictness.LENIENT)
 class FactureServiceImplTest {
-    @Mock //Definition d'un mock
+  /*  @Mock //Definition d'un mock
             FactureRepository fact;
     @InjectMocks
     FactureServiceImpl facts;
@@ -85,7 +85,7 @@ class FactureServiceImplTest {
         verify(fact).findById(Mockito.anyLong());
     }
 
-
+*/
 
 
 
