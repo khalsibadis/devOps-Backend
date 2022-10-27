@@ -28,7 +28,7 @@ public class ReglementServiceImpl implements IReglementService {
 		List<Reglement> reglements= (List<Reglement>) reglementRepository.findAll();
 		try {
 			log.info("In Method retrieveAllReglements :");
-			int i = 1/0;
+
 			reglements = (List<Reglement>) reglementRepository.findAll();
 			for (Reglement facture : reglements) {
 			}
@@ -45,7 +45,7 @@ public class ReglementServiceImpl implements IReglementService {
 		List<Reglement> reglements = (List<Reglement>) reglementRepository.findAll();
 		try {
 			log.info("In Method addReglement :");
-			int i = 1/0;
+
 			reglements = (List<Reglement>) reglementRepository.findAll();
 			for (Reglement reglement : reglements) {
 			}
@@ -77,5 +77,5 @@ public class ReglementServiceImpl implements IReglementService {
 	public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
 		return reglementRepository.getChiffreAffaireEntreDeuxDate( startDate, endDate);
 	}
-
+	
 }
