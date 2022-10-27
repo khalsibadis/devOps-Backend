@@ -34,15 +34,24 @@ pipeline {
               }
               stage("nexus deploy"){
                  steps{
-                  nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: '/var/lib/jenkins/workspace/projetDevops/target/docker-spring-boot.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'com.esprit.examen', nexusUrl: '192.168.33.166:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '2.1.0'
+                  nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: '/var/lib/jenkins/workspace/projetDevops/target/docker-spring-boot.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'com.esprit.examen', nexusUrl: '192.168.33.166:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '2.2.0'
                  }
               }
-              stage('DOCKER FILE') {
+              stage('Build Docker Image') {
                  steps {
-                 sh 'docker build -t aymenjbara/dockerfile_spring:2.0.0 .'
-                 sh 'docker push aymenjbara/dockerfile_spring:2.0.0'
+                 sh 'docker build -t aymenjbara/dockerfile_spring:2.2.0 .'
                  }
               }
+
+                stage('Push Docker Image') {
+                               steps {
+                               withCredentials([string(credentialsId: 'DockerhubPWS', variable: 'DockerhubPWS')]) {
+                                     sh "docker login -u aymenjbara -p ${DockerhubPWS}"
+
+                               }
+                               sh 'docker push aymenjbara/dockerfile_spring:2.2.0'
+                               }
+                            }
           }
               post {
                       success {
