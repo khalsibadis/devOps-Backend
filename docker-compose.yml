@@ -13,6 +13,7 @@ services:
     volumes:
       - db:/var/lib/mysql
   app:
+    image: aymenjbara/dockerfile_spring
     depends_on:
       - mysqldb
     build: .
