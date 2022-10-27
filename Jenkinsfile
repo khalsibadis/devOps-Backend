@@ -50,6 +50,16 @@ pipeline {
                                	sh 'docker push badiskhalsi/springproject'
                                   }  }
 
+
+                                  stage('Testing process') {
+                                                                steps {
+                                                                 script {
+                                                                  sh 'echo "Test is processing ...."'
+                                                                  sh 'mvn clean test'
+                                                                 }
+                                                                }
+                                                              }
+
              stage('MVN SONARQUBE ')
                         {
                             steps{
