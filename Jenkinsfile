@@ -40,7 +40,7 @@ pipeline {
               stage('DOCKER FILE') {
                  steps {
                  sh 'docker build -t aymenjbara/dockerfile_spring:2.0.0 .'
-                // sh 'docker push aymenjbara/dockerfile_spring:2.1.0'
+                 sh 'docker push aymenjbara/dockerfile_spring:2.0.0'
                  }
               }
           }
