@@ -26,7 +26,7 @@ services:
       - mysqldb
   angularapp:
     image: aymenjbara/dockerfile_angular
-    container_name: angularapp
+    container_name: dockerfile_angular
     restart: on-failure
     ports:
       - 4200:80
