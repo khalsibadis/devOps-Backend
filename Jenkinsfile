@@ -39,7 +39,6 @@ pipeline {
               }
               stage('Build Docker Image') {
                  steps {
-                 sh 'chmod 666 /var/run/docker.sock'
                  sh 'docker build -t aymenjbara/dockerfile_spring:2.2.2 .'
                  }
               }
