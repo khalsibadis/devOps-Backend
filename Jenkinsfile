@@ -34,12 +34,12 @@ pipeline {
               }
               stage("nexus deploy"){
                  steps{
-                  nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: '/var/lib/jenkins/workspace/projetDevops/target/docker-spring-boot.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'com.esprit.examen', nexusUrl: '192.168.33.166:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '2.2.2'
+                  nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: '/var/lib/jenkins/workspace/projetDevops/target/docker-spring-boot.jar', type: 'jar']], credentialsId: 'nexus-snapshots', groupId: 'com.esprit.examen', nexusUrl: '192.168.33.166:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '2.2.1'
                  }
               }
               stage('Build Docker Image') {
                  steps {
-                 sh 'docker build -t aymenjbara/dockerfile_spring:2.2.2 .'
+                 sh 'docker build -t aymenjbara/dockerfile_spring:2.2.1 .'
                  }
               }
 
@@ -49,7 +49,7 @@ pipeline {
                                      sh "docker login -u aymenjbara -p ${DockerhubPWS}"
 
                                }
-                               sh 'docker push aymenjbara/dockerfile_spring:2.2.2'
+                               sh 'docker push aymenjbara/dockerfile_spring:2.2.1'
                                }
                             }
                               stage('DOCKER COMPOSE') {
