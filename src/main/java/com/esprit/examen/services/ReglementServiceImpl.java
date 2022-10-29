@@ -3,12 +3,16 @@ package com.esprit.examen.services;
 import java.util.Date;
 import java.util.List;
 
+import com.esprit.com.dto.ConverterReglement;
+import com.esprit.com.dto.ReglementDTO;
+
 import com.esprit.examen.entities.Facture;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.esprit.examen.entities.Reglement;
+import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.repositories.FactureRepository;
 import com.esprit.examen.repositories.ReglementRepository;
 
@@ -38,6 +42,13 @@ public class ReglementServiceImpl implements IReglementService {
 		}
 
 		return reglements;
+	}
+	
+	//retriverAll avec DTO
+	@Override
+	public List<ReglementDTO> retrieveAllReglement2() {
+		List<Reglement> findAll = (List<Reglement>) reglementRepository.findAll();
+		return ConverterReglement.entityToDto(findAll);
 	}
 
 	@Override
@@ -77,5 +88,29 @@ public class ReglementServiceImpl implements IReglementService {
 	public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
 		return reglementRepository.getChiffreAffaireEntreDeuxDate( startDate, endDate);
 	}
+	
+	
+	@Override
+	public void deleteReglement(Long id) {
+		reglementRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public ReglementDTO retrieveReglement2( Long id) {
+		Reglement orElse = reglementRepository.findById(id).orElse(null);
+		return ConverterReglement.entityToDto(orElse);
+		
+	}
+	
+	
+	@Override
+public ReglementDTO addANDupdate2( ReglementDTO dto) {
+		
+		Reglement reglement = ConverterReglement.dtoToEntity(dto);
+		reglement =  reglementRepository.save(reglement );
+		return ConverterReglement.entityToDto(reglement );
+	}
+
 	
 }

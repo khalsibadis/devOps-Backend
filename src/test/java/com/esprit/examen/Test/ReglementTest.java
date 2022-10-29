@@ -6,22 +6,19 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-
-import com.esprit.examen.entities.Facture;
+import com.esprit.com.dto.ReglementDTO;
 import com.esprit.examen.entities.Reglement;
-import com.esprit.examen.entities.SecteurActivite;
-import com.esprit.examen.repositories.DetailFactureRepository;
-import com.esprit.examen.repositories.FactureRepository;
-import com.esprit.examen.repositories.FournisseurRepository;
-import com.esprit.examen.repositories.OperateurRepository;
-import com.esprit.examen.repositories.ProduitRepository;
+
 import com.esprit.examen.repositories.ReglementRepository;
 import com.esprit.examen.services.ReglementServiceImpl;
 
@@ -30,22 +27,20 @@ public class ReglementTest {
 
 	@InjectMocks
 	ReglementServiceImpl reglementServiceImpl ;
-	
-	@Mock
-	FactureRepository factureRepository;
-	@Mock
-	OperateurRepository operateurRepository;
-	@Mock
-	DetailFactureRepository detailFactureRepository;
-	@Mock
-	FournisseurRepository fournisseurRepository;
-	@Mock
-	ProduitRepository produitRepository;
-	//@Mock
-    //ReglementServiceImpl reglementService;
 	@Mock
 	ReglementRepository reglementRepository;
 	
+	//logging
+	Reglement reglement = new Reglement(null,100, 10, null, null, null);
+	
+	List<Reglement> list = new ArrayList<Reglement>() {
+		
+		{
+			add(new Reglement());
+			add(new Reglement());
+			
+		}
+	};
 
 	@Test
 	void test_retrieveAllReglements_ok() {
@@ -67,5 +62,32 @@ public class ReglementTest {
 		//assert
 		assertEquals(1L, r.getIdReglement());
 		}
+	
+	
+	public void selectOne(){
+	Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(reglement));
+	Reglement reg = reglementServiceImpl.retrieveReglement((long) 2 );
+	
+	Assertions.assertNotNull(reg);
+	}
+	
+	public void delete() {
+	 	
+		Reglement r = reglementRepository.findById(1L).get();	
+		reglementRepository.delete(r);
+		reglementServiceImpl.deleteReglement(null);
+		
+	}
+	
+	public void modifier(){
+		ReglementDTO reg= new ReglementDTO();
+		reg.setIdReglement(null);
+		//mock
+		when(reglementRepository.save(any())).thenReturn(reglementServiceImpl);	
+		//call function 
+		reglementServiceImpl.addANDupdate2(new ReglementDTO());
+		//assert
+		assertEquals(1L,reg.getIdReglement());
+}	
 	
 }
