@@ -1,5 +1,4 @@
-FROM centos
-LABEL NourheneKheriji5SE1
-RUN yum install java-11-openjdk-devel
-CMD "echo hello to my Dockerfile"
+FROM openjdk:11
 EXPOSE 8089
+ADD target/docker-spring-boot.jar docker-spring-boot.jar
+ENTRYPOINT ["java","-jar","/docker-spring-boot.jar"]
