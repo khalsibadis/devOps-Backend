@@ -10,14 +10,12 @@ import io.swagger.annotations.Api;
 
 
 @RestController
-@CrossOrigin("*")
 @Api(tags = "Gestion des produits")
 @RequestMapping("/produit")
 public class ProduitRestController {
 
 	@Autowired
 	IProduitService produitService;
-
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
