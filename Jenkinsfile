@@ -1,12 +1,12 @@
 pipeline {
        agent any
-       environment{
+      /* environment{
         NEXUS_VERSION ="nexus3"
         NEXUS_PROTOCOL ="http"
         NEXUS_URL="192.168.1.17:8081"
         NEXUS_REPOSITORY="Devops-Back-Release"
         NEXUS_CREDENTIAL_ID="nexus3"
-       }
+       }*/
         stages{
             stage('Checkout GIT'){
                 steps{
@@ -51,7 +51,9 @@ pipeline {
 
           stage("nexus deploy"){
             steps{
-              script {
+
+               sh 'mvn deploy'
+            /*  script {
                     pom = readMavenPom file: "pom.xml";
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
@@ -79,7 +81,7 @@ pipeline {
                             ]
                         );
                     } else {
-                        error "*** File: ${artifactPath}, could not be found";
+                        error "*** File: ${artifactPath}, could not be found";*/
                     }
                 
             }
