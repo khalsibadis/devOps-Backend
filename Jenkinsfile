@@ -6,8 +6,8 @@ pipeline {
                     echo 'Pulling...';
                     git branch: 'nourheneBack',
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
-                             }
-                             }
+                }
+            }
 
             stage('MVN CLEAN')
             {
@@ -21,12 +21,19 @@ pipeline {
                 sh  'mvn compile -e'
                 }
             }
+//lancer les test unitaire
+ //stage('MVN testUnitaire')
+         //  {
+              //  steps{
+             //   sh  'mvn compile -e'
+             //   }
+           // }
+
+
       
         stage("build & SonarQube analysis") {
             steps {
-
                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
-               
             }
           }
          stage('package artifact'){
@@ -36,24 +43,22 @@ pipeline {
           }
 
           stage("nexus deploy"){
-            steps{
-                nexusArtifactUploader artifacts: [
-                    [
-            artifactId: 'tpAchatProject',
-               classifier: '',
-         file: '/var/lib/jenkins/workspace/projetDevops/target/docker-spring-boot.jar',
-            type: 'jar'
-        ]
-     ],
-            credentialsId: 'nexus-snapshots',
-           groupId: 'com.esprit.examen',
-        nexusUrl: '192.168.1.17:8081',
-      nexusVersion: 'nexus3',
-   protocol: 'http', 
-   repository: 'Devops-Back-Release', 
-   version: '2.2.2'
-              }
+           /* steps{
+                    nexusArtifactUploader artifacts: [
+                        [ artifactId: 'tpAchatProject', classifier: '',file: '/var/lib/jenkins/workspace/projetDevops/target/docker-spring-boot.jar',type: 'jar']
+                    ],
+                    credentialsId: 'nexus-snapshots',
+                    groupId: 'com.esprit.examen',
+                    nexusUrl: '192.168.1.17:8081',
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    repository: 'Devops-Back-Release',
+                    version: '2.2.2'
+            }*/
+            sh 'mvn deploy'
           }
+
+
             stage ('Build'){
              steps{
                 sh 'docker build -t nourhenekheriji/openjdk:latest .'
