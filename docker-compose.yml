@@ -25,7 +25,7 @@ services:
     depends_on:
       - mysqldb
   angularapp:
-    image: aymenjbara/dockerfile_angular:2.2.2
+    image: aymenjbara/dockerfile_angular
     container_name: dockerfile_angular
     restart: on-failure
     ports:

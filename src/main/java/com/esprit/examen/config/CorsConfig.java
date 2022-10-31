@@ -1,4 +1,4 @@
-package com.esprit.examen.Config;
+package com.esprit.examen.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
