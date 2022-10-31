@@ -81,7 +81,7 @@ pipeline {
                     } else {
                         error "*** File: ${artifactPath}, could not be found";
                     }
-                }
+                
             }
 
                   /*  nexusArtifactUploader artifacts: [
@@ -96,7 +96,7 @@ pipeline {
                     version: '2.2.2'*/
             }
           }
-}
+
             stage ('Build'){
              steps{
                 sh 'docker build -t nourhenekheriji/openjdk:latest .'
