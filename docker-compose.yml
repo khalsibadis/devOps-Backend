@@ -2,33 +2,40 @@ version: "3.1"
 
 services:
   mysqldb:
-    container_name: mysqldb
-    ports:
-      - "3306:3306"
+    image: mysql:5.7
+    restart: unless-stopped
+    env_file: ./.env
     environment:
-      - MYSQL_DATABASE=1
-      - MYSQL_ALLOW_EMPTY_PASSWORD=1
-    restart: always
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
-    image: mysql:latest
   app:
     image: aymenjbara/dockerfile_spring
     container_name: dockerfile_spring
-   ports:
-      - "8089:8089"
+    restart: on-failure
+    environment:
+      -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/tpachato?useUnicode=yes&&useJDBCCompliantTimezoneShift=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    volumes:
+      - .m2:/root/.m2
+    ports:
+      - 8089:8089
     depends_on:
       - mysqldb
   angularapp:
-    depends_on:
-      - app
     image: aymenjbara/dockerfile_angular:2.2.2
     container_name: dockerfile_angular
+    restart: on-failure
     ports:
-      - "4200:80"
+      - 4200:80
+    depends_on:
+      - app
+
+
 volumes:
   db:
-
 
 
 
