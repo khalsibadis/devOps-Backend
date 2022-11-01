@@ -15,9 +15,7 @@ services:
   app:
     image: aymenjbara/dockerfile_spring
     container_name: dockerfile_spring
-    environment:
-      -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/tpachato?useUnicode=yes&&useJDBCCompliantTimezoneShift=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-    ports:
+   ports:
       - "8089:8089"
     depends_on:
       - mysqldb
