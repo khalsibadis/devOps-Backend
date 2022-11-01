@@ -18,7 +18,7 @@ services:
     container_name: dockerfile_spring
     ports:
       - '8089:8089'
-    image: aymenjbara/dockerfile_spring
+    image: aymenjbara/dockerfile_spring:2.2.4
 
   dockerfile_angular:
     depends_on:
