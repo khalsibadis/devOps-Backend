@@ -3,15 +3,15 @@ version: "3.1"
 services:
   mysqldb:
     container_name: mysqldb
-      ports:
-        - '3306:3306'
-      environment:
-        - MYSQL_DATABASE=1
-        - MYSQL_ALLOW_EMPTY_PASSWORD=1
-      restart: always
-      volumes:
-        - mysqldb:/var/lib/mysql
-      image: 'mysql:latest'
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_DATABASE=1
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    restart: always
+    volumes:
+      - mysqldb:/var/lib/mysql
+    image: 'mysql:latest'
   app:
     image: aymenjbara/dockerfile_spring
     container_name: dockerfile_spring
