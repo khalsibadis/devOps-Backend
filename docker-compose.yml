@@ -1,22 +1,42 @@
 version: "3.1"
 
 services:
+  sonarqube:
+    image: sonarqube:8.9.7-community
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    volumes:
+      - 'SonarQube_data:/opt/SonarQube/data'
+      - 'SonarQube_extensions:/opt/SonarQube/extensions'
+      - 'SonarQube_logs:/opt/SonarQube/logs'
+    nexus:
+      image: sonatype/nexus3
+      ports:
+        - "8081:8081"
+      volumes:
+        - 'nexus-data:/nexus-data'
+  volumes:
+    SonarQube_data:
+    SonarQube_extensions:
+    SonarQube_logs:
+    nexus-data:
   mysqldb:
     container_name: mysqldb
     ports:
-      - '3306:3306'
+      - "3306:3306"
     environment:
       - MYSQL_DATABASE=1
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     restart: always
     volumes:
-      - mysqldb:/var/lib/mysql
-    image: 'mysql:latest'
+      - db:/var/lib/mysql
+    image: mysql:latest
   app:
     image: aymenjbara/dockerfile_spring
     container_name: dockerfile_spring
     ports:
-      - '8089:8089'
+      - "8089:8089"
     depends_on:
       - mysqldb
   angularapp:
@@ -25,9 +45,9 @@ services:
     image: aymenjbara/dockerfile_angular:2.2.2
     container_name: dockerfile_angular
     ports:
-      - '4200:80'
+      - "4200:80"
 volumes:
-  mysqldb: { }
+  db:
 
 
 
