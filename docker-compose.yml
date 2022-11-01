@@ -1,47 +1,33 @@
-version: "3.1"
+version: "3.4"
 
 services:
-  mysqldb:
-    image: mysql:5.7
-    restart: unless-stopped
-    env_file: ./.env
-    environment:
-      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
-      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+  mysql-container3:
+    container_name: mysql-container3
     ports:
-      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+      - '3306:3306'
+    environment:
+      - MYSQL_DATABASE=1
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    restart: always
     volumes:
-      - db:/var/lib/mysql
-  app:
-    image: aymenjbara/dockerfile_spring
+      - mysql-container3:/var/lib/mysql:rw
+    image: 'mysql:latest'
+  dockerfile_spring:
+    depends_on:
+      - mysql-container3
     container_name: dockerfile_spring
-    restart: on-failure
-    environment:
-      SPRING_APPLICATION_JSON: '{
-           "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
-           "spring.datasource.username" : "$MYSQLDB_USER",
-           "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
-           "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-           "spring.jpa.hibernate.ddl-auto" : "update"
-         }'
-    volumes:
-      - .m2:/root/.m2
     ports:
-      - 8089:8089
-    depends_on:
-      - mysqldb
-  angularapp:
-    image: aymenjbara/dockerfile_angular:2.2.2
-    container_name: dockerfile_angular
-    restart: on-failure
-    ports:
-      - 4200:80
-    depends_on:
-      - app
+      - '8089:8089'
+    image: aymenjbara/dockerfile_spring
 
+  dockerfile_angular:
+    depends_on:
+      - dockerfile_spring
+    container_name: dockerfile_angular
+
+    ports:
+      - '4200:80'
+    image: aymenjbara/dockerfile_angular:2.2.2
 
 volumes:
-  db:
-
-
-
+  mysql-container3: { }
