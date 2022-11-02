@@ -32,11 +32,7 @@ pipeline {
               }
           }
 
-          stage("nexus deploy"){
-            steps{
 
-               sh 'mvn deploy'
-            }}
 
             stage ('Build'){
              steps{
