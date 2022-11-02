@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface FournisseurRepository extends JpaRepository<Fournisseur, Long> {
 
 }
-Footer
-© 2022 GitHub, Inc.
+
