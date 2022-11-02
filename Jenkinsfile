@@ -4,7 +4,7 @@ pipeline {
             stage('Checkout GIT'){
                 steps{
                     echo 'Pulling...';
-                    git branch: 'tarekback',
+                    git branch: 'tarek',
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
                              }
                              }
