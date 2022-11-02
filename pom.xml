@@ -119,6 +119,11 @@
         <finalName>docker-spring-boot</finalName>
     </build>
     <distributionManagement>
+
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://192.168.90.95:8081/repository/maven-snapshots</url>
+        </snapshotRepository>
         <repository>
             <id>nexus-releases</id>
             <url>http://192.168.90.95:8081/repository/maven-releases/</url>
