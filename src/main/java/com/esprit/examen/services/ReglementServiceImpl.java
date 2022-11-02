@@ -34,8 +34,7 @@ public class ReglementServiceImpl implements IReglementService {
 			log.info("In Method retrieveAllReglements :");
 
 			reglements = (List<Reglement>) reglementRepository.findAll();
-			for (Reglement facture : reglements) {
-			}
+
 			log.info("out of Method retrieveAllReglements with succes");
 		}catch (Exception e) {
 			log.error("out of Method retrieveAllReglements with Errors + e");
@@ -58,8 +57,7 @@ public class ReglementServiceImpl implements IReglementService {
 			log.info("In Method addReglement :");
 
 			reglements = (List<Reglement>) reglementRepository.findAll();
-			for (Reglement reglement : reglements) {
-			}
+
 			log.info("out of Method addReglement with succes");
 		}catch (Exception e) {
 			log.error("out of Method addReglement with Errors + e");
@@ -79,7 +77,7 @@ public class ReglementServiceImpl implements IReglementService {
 
 	@Override
 	public List<Reglement> retrieveReglementByFacture(Long idFacture) {
-		Facture facture = factureRepository.findById(idFacture).orElse(null);
+
 		Reglement reglement = reglementRepository.findById(idFacture).orElse(null);
 		return (List<Reglement>) reglement.getFacture();
 	}
