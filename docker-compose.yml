@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  mysqldb:
+    image: 'mysql:5.7'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=tpachato
+    ports:
+      - "3307:3306"
+  springboot-docker-container:
+    image: dalioueslati/spring-app:latest
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/tpachato?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "root"
+   
+    depends_on:
+      - mysqldb
