@@ -6,6 +6,8 @@ pipeline {
                 steps{
                     echo 'Pulling...';
                     git branch: 'jerbiBack',
+                    credentialsId: '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',
+
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
                              }
                              }
