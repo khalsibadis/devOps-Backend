@@ -9,11 +9,11 @@ import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.StockRepository;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
+
 @Slf4j
 public class StockServiceImpl implements IStockService {
 
-	@Autowired
+	
 	StockRepository stockRepository;
 
 

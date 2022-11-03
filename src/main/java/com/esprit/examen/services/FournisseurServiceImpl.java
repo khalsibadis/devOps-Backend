@@ -5,8 +5,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import com.esprit.examen.entities.DetailFournisseur;
 import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.entities.SecteurActivite;
@@ -16,17 +15,14 @@ import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.SecteurActiviteRepository;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
 @Slf4j
 public class FournisseurServiceImpl implements IFournisseurService {
 
-	@Autowired
 	FournisseurRepository fournisseurRepository;
-	@Autowired
+	
 	DetailFournisseurRepository detailFournisseurRepository;
-	@Autowired
+	
 	ProduitRepository produitRepository;
-	@Autowired
 	SecteurActiviteRepository secteurActiviteRepository;
 
 	@Override
