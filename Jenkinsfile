@@ -4,10 +4,7 @@ pipeline {
         stages{
             stage('Checkout GIT'){
                 steps{
-                    echo 'Pulling...';
-                    git branch: 'jerbiBack',
-                    credentialsId: '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',
-                    url : 'https://github.com/khalsibadis/devOps-Backend.git';
+                    checkout([$class: 'GitSCM', branches: [[name: '*/jerbiBack']], extensions: [], userRemoteConfigs: [[credentialsId: '493c8672-5669-4e56-853b-f872137ab8aa', url: 'https://github.com/khalsibadis/devOps-Backend.git']]])
                              }
                              }
 
