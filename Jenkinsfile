@@ -5,7 +5,7 @@ pipeline {
                 steps{
                     echo 'Pulling...';
                     git branch: 'nourheneBack',
-                    credentialsId: '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',
+                    credentialsId: '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',
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
                              }
                              }
@@ -37,9 +37,9 @@ pipeline {
 
                                               stage('Docker login') {
 
-                                                                                      steps {
-                                                                                       sh 'echo "login Docker ...."'
-                   	sh 'docker login -u nourhenekheriji -p Nourhene1234'
+                                                         steps {
+                                                            sh 'echo "login Docker ...."'
+                                                                	sh 'docker login -u nourhenekheriji -p Nourhene1234'
                                                                             }  }
 
 
@@ -60,13 +60,7 @@ pipeline {
                             }
                         }
 
-
-
-	}
-}
-
-/*
-            stage("Email Notification"){
+           stage("Email Notification"){
                   success {
 
                         emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'nourhenekh20@gmail.com'
@@ -77,4 +71,8 @@ pipeline {
                       }
             }
 
-*/
+
+	}
+}
+
+
