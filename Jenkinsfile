@@ -70,17 +70,18 @@ pipeline {
 
 
 
-                            post {
-                                            success {
-                                                 mail to: "khalsibadis1@gmail.com",
-                                                 subject: "Pipeline Success",
-                                                 body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
-                                            }
-                failure {
-                    mail to: "khalsibadis1@gmail.com",
-                     subject: "Pipeline Failure",
-                     body: "Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "
-                }
+
 
 	}
+	post {
+                                                success {
+                                                     mail to: "khalsibadis1@gmail.com",
+                                                     subject: "Pipeline Success",
+                                                     body: "success on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL}"
+                                                }
+                    failure {
+                        mail to: "khalsibadis1@gmail.com",
+                         subject: "Pipeline Failure",
+                         body: "Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "
+                    }
 }
