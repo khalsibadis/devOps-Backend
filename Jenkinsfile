@@ -67,6 +67,12 @@ pipeline {
                                	sh 'docker push badiskhalsi/springproject'
                                   }  }
 
+                                     stage('Docker compose') {
+
+                          steps {
+                               sh 'docker-compose up -d'
+                                 }  }
+
 
 
 
