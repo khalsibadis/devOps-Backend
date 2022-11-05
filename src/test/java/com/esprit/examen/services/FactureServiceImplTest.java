@@ -27,13 +27,12 @@ import com.esprit.examen.repositories.FactureRepository;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
-@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 
 @MockitoSettings(strictness = Strictness.LENIENT)
 class FactureServiceImplTest {
 
-    /*  @Mock
+      @Mock
     FactureRepository factureRepository;
 
     @InjectMocks
@@ -87,7 +86,7 @@ class FactureServiceImplTest {
         assertEquals(3, factureList.size());
         System.out.println(" Retrieve all is working correctly...!!");
     }
-    */
+    
 
 
 
