@@ -30,8 +30,8 @@ pipeline {
                            stage('MVN Test'){
                                               steps{
                                                   sh  'mvn test'
-                                              }*/
-                                        }
+                                              
+                                        }*/
                              stage('MVN SONARQUBE ')
                                             {
                                                 steps{
