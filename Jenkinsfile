@@ -32,6 +32,7 @@ pipeline {
                                                   sh  'mvn test'
                                               
                                         }
+                           }
                              stage('MVN SONARQUBE ')
                                             {
                                                 steps{
