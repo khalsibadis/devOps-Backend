@@ -1,8 +1,8 @@
 version: '3'
 services:
   database:
-    image: mysql
-    container_name: mysql
+    image: mysqldb
+    container_name: mysqldb
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: tpachato
