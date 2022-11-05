@@ -33,13 +33,13 @@ import lombok.extern.slf4j.Slf4j;
 @MockitoSettings(strictness = Strictness.LENIENT)
 class FactureServiceImplTest {
 
-    @Mock
+    /*  @Mock
     FactureRepository factureRepository;
 
     @InjectMocks
     FactureServiceImpl factureService;
 
-    @Test
+      @Test
     public void testRetrieveFacture() {
 
         Facture facture = new Facture(1L, 100, 500, null, null, null, null, null, null);
@@ -87,6 +87,7 @@ class FactureServiceImplTest {
         assertEquals(3, factureList.size());
         System.out.println(" Retrieve all is working correctly...!!");
     }
+    */
 
 
 
