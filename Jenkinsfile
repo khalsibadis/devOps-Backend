@@ -61,19 +61,7 @@ pipeline {
                                 sh 'echo "Docker is pushing ...."'
                                	sh 'docker push aymenjerbi/backproject'
                                   }  }
-                 stage ("Email Notification"){
-                        steps{
-                       
-                     success {
-
-                        emailext body: 'good joob', subject: 'Pipeline build', to: 'aymen.jerbi1@esprit'
-                      }
-                      failure {
-
-                        emailext body: 'failure build', subject: 'Pipeline build', to: 'aymen.jerbi1@esprit.tn'
-                      }
-                        }
-            }
+                 
             }
         }
 
