@@ -62,6 +62,7 @@ pipeline {
                                	sh 'docker push aymenjerbi/backproject'
                                   }  }
                  stage ("Email Notification"){
+                        steps{
                        
                      success {
 
@@ -71,6 +72,7 @@ pipeline {
 
                         emailext body: 'failure build', subject: 'Pipeline build', to: 'aymen.jerbi1@esprit.tn'
                       }
+                        }
             }
             }
         }
