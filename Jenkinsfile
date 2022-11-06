@@ -61,6 +61,16 @@ pipeline {
                                 sh 'echo "Docker is pushing ...."'
                                	sh 'docker push aymenjerbi/backproject'
                                   }  }
+                stage("Email verification"){
+                  success {
+
+                        emailext body: 'good joob', subject: 'Pipeline build', to: 'aymen.jerbi1@esprit'
+                      }
+                      failure {
+
+                        emailext body: 'Pipeline build not success', subject: 'Pipeline build', to: 'nourhenekh20@gmail.com'
+                      }
+            }
             }
         }
 
