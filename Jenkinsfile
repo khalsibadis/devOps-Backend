@@ -61,7 +61,7 @@ pipeline {
                                 sh 'echo "Docker is pushing ...."'
                                	sh 'docker push aymenjerbi/backproject'
                                   }  }
-                 post {
+                 stage ("Email Notification"){
                        
                      success {
 
