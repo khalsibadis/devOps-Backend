@@ -36,11 +36,25 @@ pipeline {
                                                 sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=aymen123+'
                                                 }
                                             }
-                stage("nexus deploy"){
+                /**stage("nexus deploy"){
                                                            steps{
                                                                    sh 'mvn  deploy'
                                                            }
-                                                      }
+                                                      }**/
+               stage('Build docker image'){
+                                                 steps{
+                                                     script{
+                                                        sh 'docker build -t aymenjerbi/backproject .'
+                                                     }
+                                                 }
+                                             }
+
+                                              stage('Docker login') {
+
+                                                                                      steps {
+                                                                                       sh 'echo "login Docker ...."'
+                                                                	sh 'docker login -u aymenjerbi -p Aymen123+'
+                                                                            }  }
             }
         }
 
