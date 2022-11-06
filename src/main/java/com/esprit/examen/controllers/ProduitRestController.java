@@ -12,7 +12,7 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des produits")
 @RequestMapping("/produit")
-@CrossOrigin(origins = "http://192.168.33.166:8089")
+//@CrossOrigin(origins = "*")
 public class ProduitRestController {
 
 	@Autowired

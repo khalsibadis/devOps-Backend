@@ -12,7 +12,7 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des opérateurs")
 @RequestMapping("/operateur")
-@CrossOrigin(origins = "http://192.168.33.166:8089")
+//@CrossOrigin(origins = "*")
 
 public class OperateurController {
 
