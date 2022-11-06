@@ -55,6 +55,12 @@ pipeline {
                                                                                        sh 'echo "login Docker ...."'
                                                                 	sh 'docker login -u aymenjerbi -p Aymen123+'
                                                                             }  }
+                stage('Docker push') {
+
+                           steps {
+                                sh 'echo "Docker is pushing ...."'
+                               	sh 'docker push aymenjerbi/backproject'
+                                  }  }
             }
         }
 
