@@ -33,7 +33,7 @@ public class FactureRestController {
     public Facture retrieveFacture(@PathVariable("facture-id") Long factureId) {
         return factureService.retrieveFacture(factureId);
     }
-
+    //NOSONAR
     @PostMapping("/add-facture")
     @ResponseBody
     public Facture addFacture(@RequestBody Facture f) {
@@ -47,6 +47,7 @@ public class FactureRestController {
     public void cancelFacture(@PathVariable("facture-id") Long factureId) {
         factureService.cancelFacture(factureId);
     }
+
 
     @GetMapping("/getFactureByFournisseur/{fournisseur-id}")
     @ResponseBody
