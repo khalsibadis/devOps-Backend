@@ -4,8 +4,8 @@ pipeline {
             stage('Checkout GIT'){
                 steps{
                     echo 'Pulling...';
-                    git branch: 'nourheneBack',
-                    credentialsId: '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',
+                    git branch: 'nourhenekheriji',
+                   // credentialsId: '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',
                     url : 'https://github.com/khalsibadis/devOps-Backend.git';
                              }
                              }
@@ -27,6 +27,25 @@ pipeline {
                               sh  'mvn package'
                           }
                     }
+
+                     stage('Test'){
+                               steps{
+                                         sh  'mvn test'
+                                              }
+                                        }
+                    stage('MVN SONARQUBE ')
+                                            {
+                                                steps{
+                                                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
+                                                }
+                                            }
+                        stage('deploy nexus'){
+                                                      steps{
+                                                                 sh 'mvn  deploy'
+                                                                     }
+                                                               }
+
+
                     stage('Build docker image'){
                                                  steps{
                                                      script{
@@ -53,12 +72,7 @@ pipeline {
 
 
 
-             stage('MVN SONARQUBE ')
-                        {
-                            steps{
-                            sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
-                            }
-                        }
+
 
            stage("Email Notification"){
                   success {
