@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://192.168.33.166:4200")
+                        .allowedOrigins("Access-Control-Allow-Origin")
                         .allowedMethods("*").allowedMethods();
             }
         };
