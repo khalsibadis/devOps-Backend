@@ -15,6 +15,7 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des stocks")
 @RequestMapping("/stock")
+@CrossOrigin(origins = "*")
 public class StockRestController {
 
 	@Autowired
@@ -23,6 +24,8 @@ public class StockRestController {
 	// http://localhost:8089/SpringMVC/stock/retrieve-all-stocks
 	@GetMapping("/retrieve-all-stocks")
 	@ResponseBody
+
+
 	public List<Stock> getStocks() {
 		return stockService.retrieveAllStocks();
 	}
