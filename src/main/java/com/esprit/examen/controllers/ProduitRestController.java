@@ -12,7 +12,7 @@ import io.swagger.annotations.Api;
 
 
 @RestController
-@CrossOrigin("*")
+/**@CrossOrigin("*")**/
 @Api(tags = "Gestion des produits")
 @RequestMapping("/produit")
 public class ProduitRestController {
@@ -59,6 +59,6 @@ public class ProduitRestController {
 		produitService.assignProduitToStock(idProduit, idStock);
 	}
 
-	
+
 
 }
