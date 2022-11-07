@@ -16,6 +16,8 @@ import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.SecteurActiviteRepository;
 import lombok.extern.slf4j.Slf4j;
 
+import static org.mockito.ArgumentMatchers.notNull;
+
 @Service
 @Slf4j
 public class FournisseurServiceImpl implements IFournisseurService {
@@ -69,14 +71,17 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
 	@Override
 	public Fournisseur retrieveFournisseur(Long fournisseurId) {
-
-		Fournisseur fournisseur = fournisseurRepository.findById(fournisseurId).get();
+		Fournisseur fournisseur = null;
+		if (fournisseurId == notNull()) {}
+		 fournisseur = fournisseurRepository.findById(fournisseurId).get();
 		return fournisseur;
 	}
 
 	@Override
 	public void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur) {
-		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
+		Fournisseur fournisseur = null;
+		if (idFournisseur == notNull()) {}
+		fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
 		SecteurActivite secteurActivite = secteurActiviteRepository.findById(idSecteurActivite).orElse(null);
         fournisseur.getSecteurActivites().add(secteurActivite);
         fournisseurRepository.save(fournisseur);
