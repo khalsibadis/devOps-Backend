@@ -25,12 +25,12 @@ pipeline {
                               sh  'mvn package'
                           }
             }
-                        stage('MVN Test'){
+                        stage('Mock Test'){
                                               steps{
                                                   sh  'mvn test'
                                               }
                                         }
-                stage('MVN SONARQUBE ')
+                stage('SONARQUBE Test ')
                                             {
                                                 steps{
                                                 sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=aymen123+'
