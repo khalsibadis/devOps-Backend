@@ -18,6 +18,8 @@ import com.esprit.examen.repositories.OperateurRepository;
 import com.esprit.examen.repositories.ProduitRepository;
 import lombok.extern.slf4j.Slf4j;
 
+import static org.mockito.ArgumentMatchers.notNull;
+
 @Service
 @Slf4j
 @Transactional
@@ -33,9 +35,9 @@ public class FactureServiceImpl implements IFactureService {
 	FournisseurRepository fournisseurRepository;
 	@Autowired
 	ProduitRepository produitRepository;
-    @Autowired
-    ReglementServiceImpl reglementService;
-	
+	@Autowired
+	ReglementServiceImpl reglementService;
+
 	@Override
 	public List<Facture> retrieveAllFactures() {
 		List<Facture> factures = (List<Facture>) factureRepository.findAll();
@@ -45,7 +47,7 @@ public class FactureServiceImpl implements IFactureService {
 		return factures;
 	}
 
-	
+
 	public Facture addFacture(Facture f) {
 		return factureRepository.save(f);
 	}
@@ -54,7 +56,7 @@ public class FactureServiceImpl implements IFactureService {
 		float montantFacture = 0;
 		float montantRemise = 0;
 		for (DetailFacture detail : detailsFacture) {
-			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).orElse( new Produit ());
+			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).orElse(new Produit());
 			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();
 
 			float montantRemiseDetail = (prixTotalDetail * detail.getPourcentageRemise()) / 100;
@@ -91,14 +93,18 @@ public class FactureServiceImpl implements IFactureService {
 
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
-		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).get();
+		Fournisseur fournisseur = null;
+		if (idFournisseur == notNull()) {}
+		fournisseur = fournisseurRepository.findById(idFournisseur).get();
 		return (List<Facture>) fournisseur.getFactures();
 	}
 
 	@Override
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
+		Operateur operateur = null;
+		if (idOperateur == notNull()) {}
 		Facture facture = factureRepository.findById(idFacture).get();
-		Operateur operateur = operateurRepository.findById(idOperateur).get();
+		operateur = operateurRepository.findById(idOperateur).get();
 		operateur.getFactures().add(facture);
 		operateurRepository.save(operateur);
 	}
