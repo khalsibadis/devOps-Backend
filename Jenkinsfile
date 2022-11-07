@@ -45,7 +45,7 @@ pipeline {
                                                       }
                  stage('Build docker image'){
                          steps{
-                                sh 'docker build -t Tarekabdennadherr/spring .'
+                                sh 'docker build -t tarekabdennadherr/spring .'
 
                                       }
                                          }
@@ -54,7 +54,7 @@ pipeline {
 
                                                          steps {
                                                             sh 'echo "login Docker ...."'
-                                                                	sh 'docker login -u Tarekabdennadherr -p Houdanajibmohsen1998;)'
+                                                                	sh 'docker login -u tarekabdennadherr -p Houdanajibmohsen1998;)'
                                                                             }  }
 
 
@@ -62,7 +62,7 @@ pipeline {
 
                            steps {
                                 sh 'echo "Docker is pushing ...."'
-                               	sh 'docker push Tarekabdennadherr/spring'
+                               	sh 'docker push tarekabdennadherr/spring'
                                   }  }
 
 
