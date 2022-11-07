@@ -1,30 +1,57 @@
 pipeline {
-    agent any
+       agent any
+        stages{
+            stage('Checkout GIT'){
+                steps{
+                    echo 'Pulling...';
+                    git branch: 'tarek',
+                    credentialsId: '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',
+                    url : 'https://github.com/khalsibadis/devOps-Backend.git';
+                             }
+                             }
 
-    stages {
-        stage('Checkout GIT') {
-            steps {
-               echo 'Pulling..';
-                git branch: 'tarek',
-                url: 'https://github.com/khalsibadis/devOps-Backend.git';
+            stage('MVN CLEAN')
+            {
+                steps{
+                sh  'mvn clean'
+                }
             }
-        }
-       
-        stage('MVN CLEAN'){
-            steps{
-                sh 'mvn clean'
+            stage('MVN COMPILE')
+            {
+                steps{
+                sh  'mvn compile'
+                }
             }
-        }
-        stage('MVN COMPILE'){
-            steps{
-                sh 'mvn compile'
-            }
-        }
-	    
-   stage('Nexus'){
-         steps{
-                sh 'mvn deploy'
-           }
-       }
-}
+            stage('MVN PACKAGE'){
+                          steps{
+                              sh  'mvn package'
+                          }
+                    }
+                           stage('MVN Test'){
+                                              steps{
+                                                  sh  'mvn test'
+                                              
+                                        }
+                           }
+                             stage('MVN SONARQUBE ')
+                                            {
+                                                steps{
+                                                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+                                                }
+                                            }
+                                            stage("nexus deploy"){
+                                                           steps{
+                                                                   sh 'mvn  deploy'
+                                                           }
+                                                      }
+                 
+
+
+
+
+
+
+
+	}
+
 }
