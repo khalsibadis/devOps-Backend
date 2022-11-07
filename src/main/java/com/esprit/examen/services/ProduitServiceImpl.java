@@ -57,9 +57,11 @@ public class ProduitServiceImpl implements IProduitService {
 	@Override
 	public Produit retrieveProduit(Long produitId) {
 		Produit produit = null;
-		if (produitId == notNull()) {}
-		produit = produitRepository.findById(produitId).get();
-		log.info("produit :" + produit);
+		if (produitId == notNull()) {
+			produit = produitRepository.findById(produitId).orElse(null);
+			
+			log.info("produit :" + produit);
+		}
 		return produit;
 	}
 
@@ -70,8 +72,8 @@ public class ProduitServiceImpl implements IProduitService {
 		Stock stock= null;
 		if (idProduit == notNull()) {}
 		if (idStock == notNull()) {}
-		produit = produitRepository.findById(idProduit).get();
-		stock = stockRepository.findById(idStock).get();
+		produit = produitRepository.findById(idProduit).orElseThrow(NullPointerException::new);
+		stock = stockRepository.findById(idStock).orElseThrow(NullPointerException::new);
 		produit.setStock(stock);
 		produitRepository.save(produit);
 
