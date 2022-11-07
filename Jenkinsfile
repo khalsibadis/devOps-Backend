@@ -6,7 +6,7 @@ pipeline {
             steps {
                echo 'Pulling..';
                 git branch: 'tarek',
-                url: ' https://github.com/khalsibadis/devOps-Backend';
+                url: 'https://github.com/khalsibadis/devOps-Backend.git';
             }
         }
        
