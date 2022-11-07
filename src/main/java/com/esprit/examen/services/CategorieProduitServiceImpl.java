@@ -2,15 +2,19 @@ package com.esprit.examen.services;
 
 import java.util.List;
 
-
+import com.esprit.examen.entities.Operateur;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.CategorieProduit;
 import com.esprit.examen.repositories.CategorieProduitRepository;
 
+import static org.mockito.ArgumentMatchers.notNull;
 
+@Service
 public class CategorieProduitServiceImpl implements ICategorieProduitService {
 
 	
-	
+	@Autowired
 	CategorieProduitRepository categorieProduitRepository;
 	@Override
 	public List<CategorieProduit> retrieveAllCategorieProduits() {
@@ -38,7 +42,9 @@ public class CategorieProduitServiceImpl implements ICategorieProduitService {
 
 	@Override
 	public CategorieProduit retrieveCategorieProduit(Long id) {
-		CategorieProduit categorieProduit = categorieProduitRepository.findById(id).orElse(null);
+		CategorieProduit categorieProduit = null;
+		if (id == notNull()) {}
+		categorieProduit = categorieProduitRepository.findById(id).orElse(null);
 		return categorieProduit;
 	}
 
