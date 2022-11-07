@@ -105,8 +105,8 @@ public class FactureServiceImpl implements IFactureService {
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		Operateur operateur = null;
 		if (idOperateur == notNull()) {}
-		Facture facture = factureRepository.findById(idFacture).get();
-		operateur = operateurRepository.findById(idOperateur).get();
+		Facture facture = factureRepository.findById(idFacture).orElseThrow(NullPointerException::new);
+		operateur = operateurRepository.findById(idOperateur).orElseThrow(NullPointerException::new);
 		operateur.getFactures().add(facture);
 		operateurRepository.save(operateur);
 	}
