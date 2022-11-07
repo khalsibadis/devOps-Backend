@@ -1,60 +1,52 @@
-package com.esprit.examen.controllers;
+package com.esprit.examen.services;
 
 import java.util.List;
 
+import com.esprit.examen.entities.Operateur;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.CategorieProduit;
-import com.esprit.examen.services.ICategorieProduitService;
-import io.swagger.annotations.Api;
+import com.esprit.examen.repositories.CategorieProduitRepository;
 
-@RestController
-@Api(tags = "Gestion des categories Produit")
-@RequestMapping("/categorieProduit")
-public class CategorieProduitController {
+import static org.mockito.ArgumentMatchers.notNull;
 
-	@Autowired
-	ICategorieProduitService categorieProduitService;
+@Service
+public class CategorieProduitServiceImpl implements ICategorieProduitService {
+
 	
-	@GetMapping("/retrieve-all-categorieProduit")
-	@ResponseBody
-	public List<CategorieProduit> getCategorieProduit() {
-		List<CategorieProduit> list = categorieProduitService.retrieveAllCategorieProduits();
-		return list;
+	@Autowired
+	CategorieProduitRepository categorieProduitRepository;
+	@Override
+	public List<CategorieProduit> retrieveAllCategorieProduits() {
+		
+		return categorieProduitRepository.findAll();
 	}
 
-	@GetMapping("/retrieve-categorieProduit/{categorieProduit-id}")
-	@ResponseBody
-	public CategorieProduit retrieveCategorieProduit(@PathVariable("categorieProduit-id") Long categorieProduitId) {
-		return categorieProduitService.retrieveCategorieProduit(categorieProduitId);
+	@Override
+	public CategorieProduit addCategorieProduit(CategorieProduit cp) {
+		categorieProduitRepository.save(cp);
+		return cp;
 	}
 
-	@PostMapping("/add-categorieProduit")
-	@ResponseBody
-	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
-		CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(cp);
+	@Override
+	public void deleteCategorieProduit(Long id) {
+		categorieProduitRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public CategorieProduit updateCategorieProduit(CategorieProduit cp) {
+		categorieProduitRepository.save(cp);
+		return cp;
+	}
+
+	@Override
+	public CategorieProduit retrieveCategorieProduit(Long id) {
+		CategorieProduit categorieProduit = null;
+		if (id == notNull()) {
+			categorieProduit = categorieProduitRepository.findById(id).orElse(null);
+		}
 		return categorieProduit;
 	}
 
-	@DeleteMapping("/remove-categorieProduit/{categorieProduit-id}")
-	@ResponseBody
-	public void removeCategorieProduit(@PathVariable("categorieProduit-id") Long categorieProduitId) {
-		categorieProduitService.deleteCategorieProduit(categorieProduitId);
-	}
-
-	@PutMapping("/modify-categorieProduit")
-	@ResponseBody
-	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduit categorieProduit) {
-		return categorieProduitService.updateCategorieProduit(categorieProduit);
-	}
-
-	
 }
