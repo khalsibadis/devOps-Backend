@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import javax.transaction.Transactional;
+import javax.validation.constraints.Null;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.DetailFacture;
@@ -95,7 +97,7 @@ public class FactureServiceImpl implements IFactureService {
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
 		Fournisseur fournisseur = null;
 		if (idFournisseur == notNull()) {}
-		fournisseur = fournisseurRepository.findById(idFournisseur).get();
+		fournisseur = fournisseurRepository.orElseThrow(0);
 		return (List<Facture>) fournisseur.getFactures();
 	}
 
