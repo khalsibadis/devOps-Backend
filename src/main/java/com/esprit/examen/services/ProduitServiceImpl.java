@@ -2,6 +2,8 @@ package com.esprit.examen.services;
 
 import java.util.List;
 import javax.transaction.Transactional;
+
+import com.esprit.examen.entities.Fournisseur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.Produit;
@@ -11,6 +13,7 @@ import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.StockRepository;
 import lombok.extern.slf4j.Slf4j;
 
+import static org.mockito.ArgumentMatchers.notNull;
 
 
 @Service
@@ -53,15 +56,22 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public Produit retrieveProduit(Long produitId) {
-		Produit produit = produitRepository.findById(produitId).get();
+		Produit produit = null;
+		if (produitId == notNull()) {}
+		produit = produitRepository.findById(produitId).get();
 		log.info("produit :" + produit);
 		return produit;
 	}
 
 	@Override
 	public void assignProduitToStock(Long idProduit, Long idStock) {
-		Produit produit = produitRepository.findById(idProduit).orElse(null);
-		Stock stock = stockRepository.findById(idStock).orElse(null);
+		Produit produit = null;
+		if (idProduit == notNull()) {}
+		Stock stock= null;
+		if (idProduit == notNull()) {}
+		if (idStock == notNull()) {}
+		produit = produitRepository.findById(idProduit).get();
+		stock = stockRepository.findById(idStock).get();
 		produit.setStock(stock);
 		produitRepository.save(produit);
 
