@@ -59,7 +59,7 @@ public class ProduitServiceImpl implements IProduitService {
 		Produit produit = null;
 		if (produitId == notNull()) {
 			produit = produitRepository.findById(produitId).orElse(null);
-			
+
 			log.info("produit :" + produit);
 		}
 		return produit;
@@ -68,10 +68,7 @@ public class ProduitServiceImpl implements IProduitService {
 	@Override
 	public void assignProduitToStock(Long idProduit, Long idStock) {
 		Produit produit = null;
-		if (idProduit == notNull()) {}
 		Stock stock= null;
-		if (idProduit == notNull()) {}
-		if (idStock == notNull()) {}
 		produit = produitRepository.findById(idProduit).orElseThrow(NullPointerException::new);
 		stock = stockRepository.findById(idStock).orElseThrow(NullPointerException::new);
 		produit.setStock(stock);
