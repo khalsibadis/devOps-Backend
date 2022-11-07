@@ -1,5 +1,6 @@
 package com.esprit.examen.services;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -43,8 +44,10 @@ public class ProduitServiceImplTest {
 
     @InjectMocks
     ProduitServiceImpl produitServiceService;
+    Produit p = new Produit();
 
-    Produit produit = new Produit(14L , 1998L  );
+
+    Produit produit = new Produit(14L, 1998L);
 
     List<Produit> list = new ArrayList<Produit>() {
 
@@ -56,27 +59,26 @@ public class ProduitServiceImplTest {
     };
 
     @Test
-    public void getAllProduitTest()
-    {
-    List<Produit> Produitlist = new ArrayList<Produit>() {
+    public void getAllProduitTest() {
+        List<Produit> Produitlist = new ArrayList<Produit>() {
 
-    {
-    add(new Produit(3L, null, 1998, null, null, null, null, null, null));
-        add(new Produit(5L, null, 16, null, null, null, null, null, null));
-        add(new Produit(8L, null, 112, null, null, null, null, null, null));
-    }};
+            {
+                add(new Produit(3L, null, 1998, null, null, null, null, null, null));
+                add(new Produit(5L, null, 16, null, null, null, null, null, null));
+                add(new Produit(8L, null, 112, null, null, null, null, null, null));
+            }
+        };
 
 
-    Mockito.when(produitServiceService.retrieveAllProduits()).thenReturn(Produitlist);
-    List<Produit> factureList = produitServiceService.retrieveAllProduits();
-    System.out.println(" good job <3 ");
+        Mockito.when(produitServiceService.retrieveAllProduits()).thenReturn(Produitlist);
+        List<Produit> factureList = produitServiceService.retrieveAllProduits();
+        System.out.println(" good job <3 ");
     }
-
 
 
     @Test
     void test_addProduit() {
-       Produit p= new Produit();
+        Produit p = new Produit();
         p.setIdProduit(1L);
         //mock
         Mockito.when(produitRepository.save(any())).thenReturn(p);
@@ -84,14 +86,23 @@ public class ProduitServiceImplTest {
         //assert
         assertEquals(1L, p.getIdProduit());
     }
+
+    @Test
     public void delete() {
 
-        Produit p = produitRepository.findById(1L).get();
-        produitRepository.delete(p);
-        produitServiceService.deleteProduit(null);
+        Produit p = new Produit();
+        p.setIdProduit(Long.valueOf(100));
+        produitServiceService.addProduit(p);
+        produitServiceService.deleteProduit(p.getIdProduit());
 
     }
 
+    @Test
+    public void updateProduit() {
+        Mockito.when(produitRepository.save(p)).thenReturn(p);
+        Produit p1 = produitServiceService.updateProduit(p);
+        Assertions.assertEquals(p, p1);
 
 
     }
+}
