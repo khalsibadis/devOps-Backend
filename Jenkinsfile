@@ -43,7 +43,28 @@ pipeline {
                                                                    sh 'mvn  deploy'
                                                            }
                                                       }
-                 
+                 stage('Build docker image'){
+                         steps{
+                                sh 'docker build -t Tarekabdennadherr/spring .'
+
+                                      }
+                                         }
+
+                                              stage('Docker login') {
+
+                                                         steps {
+                                                            sh 'echo "login Docker ...."'
+                                                                	sh 'docker login -u Tarekabdennadherr -p Houdanajibmohsen1998;)'
+                                                                            }  }
+
+
+          stage('Docker push') {
+
+                           steps {
+                                sh 'echo "Docker is pushing ...."'
+                               	sh 'docker push Tarekabdennadherr/spring'
+                                  }  }
+
 
 
 	}
