@@ -1,6 +1,5 @@
 package com.esprit.examen.services;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -44,22 +43,15 @@ public class ProduitServiceImplTest {
 
     @InjectMocks
     ProduitServiceImpl produitServiceService;
-    Produit p = new Produit();
 
 
-    Produit produit = new Produit(14L, 1998L);
+    Produit p= new Produit(14L, 1998L);
 
-    List<Produit> list = new ArrayList<Produit>() {
 
-        {
-            add(new Produit());
-            add(new Produit());
 
-        }
-    };
 
     @Test
-    public void getAllProduitTest() {
+    public void testgetAllProduitTest() {
         List<Produit> Produitlist = new ArrayList<Produit>() {
 
             {
@@ -77,15 +69,19 @@ public class ProduitServiceImplTest {
 
 
     @Test
-    void test_addProduit() {
+    void testaddProduit() {
+
         Produit p = new Produit();
         p.setIdProduit(1L);
-        //mock
         Mockito.when(produitRepository.save(any())).thenReturn(p);
 
-        //assert
         assertEquals(1L, p.getIdProduit());
-    }
+
+
+
+
+        }
+
 
     @Test
     public void delete() {
