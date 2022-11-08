@@ -54,7 +54,7 @@ pipeline {
 
                                                          steps {
                                                             sh 'echo "login Docker ...."'
-                                                                	sh 'docker login -u tarekabdennadherr -p Houdanajibmohsen1998;)'
+                                                                	sh 'docker login -u tarekabdennadherr -p Houdanajibmohsen1998;/)'
                                                                             }  }
 
 
