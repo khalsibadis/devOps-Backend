@@ -22,7 +22,7 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(url+url1+url2+url3+url4+url3+url5+url3+url6+url7)
-                        .allowedMethods("*");
+                        .allowedMethods("*").allowedMethods("GET", "PUT", "POST", "PATCH", "DELETE", "OPTIONS");
             }
         };
     }
