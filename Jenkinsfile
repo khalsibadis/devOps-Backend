@@ -62,7 +62,7 @@ pipeline {
 
                            steps {
                                 sh 'echo "Docker is pushing ...."'
-                               	sh 'docker push tarekabdennadherr/spring'
+                               	sh 'docker push tarekkkk/spring'
                                   }  }
 
 
