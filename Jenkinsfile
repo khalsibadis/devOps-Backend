@@ -26,6 +26,11 @@ pipeline {
                 sh 'mvn package'
                 }
              }
+             stage('MVN PACKAGE'){
+                steps{
+                 sh 'mvn test'
+                 }
+             }
 
               stage('MVN SONARQUBE '){
                  steps{
