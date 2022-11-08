@@ -30,13 +30,13 @@ pipeline {
                                                   sh  'mvn test'
                                               }
                                         }
-                stage('SONARQUBE Test ')
+                stage('SONAR Test ')
                                             {
                                                 steps{
                                                 sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=aymen123+'
                                                 }
                                             }
-                /**stage("nexus deploy"){
+                /**stage("nexus "){
                                                            steps{
                                                                    sh 'mvn  deploy'
                                                            }
@@ -61,6 +61,13 @@ pipeline {
                                 sh 'echo "Docker is pushing ...."'
                                	sh 'docker push aymenjerbi/backproject'
                                   }  }
+               
+               stage('Docker compose') {
+
+                          steps {
+                               sh 'docker-compose up -d'
+                                 }  }
+               
                  
             }
         }
