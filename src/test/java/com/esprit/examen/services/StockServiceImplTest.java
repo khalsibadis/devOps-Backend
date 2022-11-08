@@ -15,16 +15,14 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.esprit.examen.entities.Stock;
 
-import java.util.List;
+
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @Slf4j
-@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 
 @MockitoSettings(strictness = Strictness.LENIENT)
