@@ -9,7 +9,7 @@ pipeline {
                              }
                              }
 
-           /* stage('MVN CLEAN')
+           stage('MVN CLEAN')
             {
                 steps{
                 sh  'mvn clean'
@@ -45,11 +45,11 @@ pipeline {
                                                       }
                  stage('Build docker image'){
                          steps{
-                                sh 'docker build -t tarekabdennadherr/spring .'
+                                sh 'docker build -t tarekkkk/spring .'
 
                                       }
                                          }
-*/
+
                                               stage('Docker login') {
 
                                                          steps {
