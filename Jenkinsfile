@@ -9,7 +9,7 @@ pipeline {
                              }
                              }
 
-            stage('MVN CLEAN')
+           /* stage('MVN CLEAN')
             {
                 steps{
                 sh  'mvn clean'
@@ -49,7 +49,7 @@ pipeline {
 
                                       }
                                          }
-
+*/
                                               stage('Docker login') {
 
                                                          steps {
